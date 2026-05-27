@@ -1,0 +1,18 @@
+// application.yml
+spring:
+  application:
+    name: product-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+// Main class annotation:
+@SpringBootApplication
+@EnableEurekaClient          // or @EnableDiscoveryClient
+public class ProductServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ProductServiceApplication.class, args);
+    }
+}

@@ -1,0 +1,12 @@
+-- SQL (subquery approach):
+SELECT MAX(salary)
+FROM employees
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+-- JPQL in JPA repository:
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+    @Query("SELECT MAX(e.salary) FROM Employee e WHERE e.salary < " +
+           "(SELECT MAX(e2.salary) FROM Employee e2)")
+    Double findSecondHighestSalary();
+}

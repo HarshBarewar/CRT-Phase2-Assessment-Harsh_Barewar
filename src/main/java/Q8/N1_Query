@@ -1,0 +1,2 @@
+@Query("SELECT o FROM Order o JOIN FETCH o.items")
+List<Order> findAllWithItems();

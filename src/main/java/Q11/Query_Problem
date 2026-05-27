@@ -1,0 +1,7 @@
+// LINE THAT CAUSES IT:
+System.out.println(o.getItems().size());
+// Each call to getItems() triggers a new lazy SELECT.
+
+// FIX — use JOIN FETCH in the repository:
+@Query("SELECT o FROM Order o JOIN FETCH o.items")
+List<Order> findAllWithItems();
